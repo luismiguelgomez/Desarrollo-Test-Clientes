@@ -10,7 +10,7 @@ prueba_tecnica\applications\app-service\src\main\java\co\com\bancolombia\MainApp
 
 Una vez allí, haz clic en el botón verde que aparece en `MainApplication` para ejecutar la aplicación.
 
-![Ejecución en IntelliJ IDEA](\ejecucionproyecto.png)
+![Ejecución en IntelliJ IDEA](ejecucionproyecto.png)
 
 # Proyecto Base Implementando Clean Architecture
 
