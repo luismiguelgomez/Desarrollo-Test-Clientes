@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "3efee23e-7387-45a6-9387-48070ae656be",
+		"name": "PruebasBBVA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13205021"
+	},
+	"item": [
+		{
+			"name": "localhost:8089/api/clientes/1/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8089/api/clientes/C/1000225586?withAddress=true",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"api",
+						"clientes",
+						"C",
+						"1000225586"
+					],
+					"query": [
+						{
+							"key": "withAddress",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Tipo de documento invalido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/clientes/1/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"1",
+								"1"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 15:45:25 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 400,\n    \"message\": \"Tipo de documento invalido\",\n    \"data\": null,\n    \"error\": \"El tipo de documento no es reconocido\"\n}"
+				},
+				{
+					"name": "solicitud sencilla sin direccion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/clientes/C/1000225586",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"C",
+								"1000225586"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 16:12:42 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Solicitud exitosa\",\n    \"data\": {\n        \"id\": 0,\n        \"primerNombre\": \"Luis\",\n        \"segundoNombre\": \"Miguel\",\n        \"primerApellido\": \"Gomez\",\n        \"segundoApellido\": \"Perez\",\n        \"telefono\": 310272820,\n        \"direccion\": null,\n        \"ciudad\": \"Medellin\",\n        \"correo\": \"luis@example.com\"\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "solicitud con direccion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/clientes/C/1000225586?withAddress=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"C",
+								"1000225586"
+							],
+							"query": [
+								{
+									"key": "withAddress",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 16:13:26 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Solicitud exitosa\",\n    \"data\": {\n        \"id\": 0,\n        \"primerNombre\": \"Luis\",\n        \"segundoNombre\": \"Miguel\",\n        \"primerApellido\": \"Gomez\",\n        \"segundoApellido\": \"Perez\",\n        \"telefono\": 310272820,\n        \"direccion\": \"Calle 48 p bis c sur #3-45\",\n        \"ciudad\": \"Medellin\",\n        \"correo\": \"luis@example.com\"\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "Error 500 se escribe un string en cedula",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8089/api/clientes/C/hola?withAddress=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"C",
+								"hola"
+							],
+							"query": [
+								{
+									"key": "withAddress",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 16:13:54 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 500,\n    \"message\": \"Error interno del servidor\",\n    \"data\": null,\n    \"error\": \"For input string: \\\"hola\\\"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "localhost:8089/api/clientes/1/1 Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"primerNombre\": \"Luis\",\r\n    \"segundoNombre\": \"Miguel\",\r\n    \"primerApellido\": \"Gomez\",\r\n    \"segundoApellido\": \"Paez\",\r\n    \"telefono\": 310272820,\r\n    \"direccion\": \"Calle 123 #45-67\",\r\n    \"ciudad\": \"Medellin\",\r\n    \"correo\": \"luis@example.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8089/api/clientes/1000225586",
+					"host": [
+						"localhost"
+					],
+					"port": "8089",
+					"path": [
+						"api",
+						"clientes",
+						"1000225586"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ajuste de apellido de perez a paez",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"primerNombre\": \"Luis\",\r\n    \"segundoNombre\": \"Miguel\",\r\n    \"primerApellido\": \"Gomez\",\r\n    \"segundoApellido\": \"Paez\",\r\n    \"telefono\": 310272820,\r\n    \"direccion\": \"Calle 123 #45-67\",\r\n    \"ciudad\": \"Medellin\",\r\n    \"correo\": \"luis@example.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/api/clientes/1000225586",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"1000225586"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 16:26:30 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 200,\n    \"message\": \"Solicitud exitosa\",\n    \"data\": {\n        \"id\": 1000225586,\n        \"primerNombre\": \"Luis\",\n        \"segundoNombre\": \"Miguel\",\n        \"primerApellido\": \"Gomez\",\n        \"segundoApellido\": \"Paez\",\n        \"telefono\": 310272820,\n        \"direccion\": \"Calle 123 #45-67\",\n        \"ciudad\": \"Medellin\",\n        \"correo\": \"luis@example.com\"\n    },\n    \"error\": null\n}"
+				},
+				{
+					"name": "Error controlado con excepcion general",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8089/api/clientes/1000225586",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"api",
+								"clientes",
+								"1000225586"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 13 Feb 2025 16:54:30 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Error interno del servidor\",\n    \"message\": \"Required request body is missing: public org.springframework.http.ResponseEntity<co.com.bancolombia.model.response.ApiResponse<co.com.bancolombia.model.response.Cliente>> co.com.bancolombia.api.ApiRest.actualizarCliente(java.lang.String,co.com.bancolombia.model.response.Cliente)\"\n}"
+				}
+			]
+		}
+	]
+}
