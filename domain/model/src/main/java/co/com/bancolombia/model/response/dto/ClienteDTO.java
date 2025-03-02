@@ -1,16 +1,17 @@
-package co.com.bancolombia.model.response;
+package co.com.bancolombia.model.response.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
-public class Cliente {
+public class ClienteDTO {
     private Long cedulaCliente;
     private String direccionCliente;
     private String emailCliente;
     private String nombreCliente;
     private String telefonoCliente;
 }
+

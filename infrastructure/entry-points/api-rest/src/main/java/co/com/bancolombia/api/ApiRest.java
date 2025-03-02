@@ -1,8 +1,10 @@
 package co.com.bancolombia.api;
 import co.com.bancolombia.model.response.ApiResponse;
 import co.com.bancolombia.model.response.Cliente;
+import co.com.bancolombia.model.response.dto.ClienteDTO;
 import co.com.bancolombia.usecase.clientes.ClientesUseCase;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,22 +16,34 @@ import org.springframework.web.bind.annotation.*;
 public class ApiRest {
     private final ClientesUseCase clientesUseCase;
 
-    @GetMapping("/{tipoDocumento}/{numeroDocumento}")
-    public ResponseEntity<ApiResponse<Cliente>> obtenerCliente(
-            @PathVariable String tipoDocumento,
-            @PathVariable String numeroDocumento,
-            @RequestParam(value = "withAddress", required = false, defaultValue = "false") boolean withAddress) {
-
-        ApiResponse<Cliente> response = clientesUseCase.obtenerCliente(tipoDocumento, numeroDocumento, withAddress);
+    @GetMapping("/listar")
+    public ResponseEntity<ApiResponse<Iterable<Cliente>>> obtenerCliente() {
+        ApiResponse<Iterable<Cliente>> response = clientesUseCase.obtenerClientes();
         return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @PostMapping("/guardar")
+    public ResponseEntity<String> crearClientes(@RequestBody ClienteDTO clienteDTO) {
+        clientesUseCase.guardarCliente(clienteDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Cliente creado exitosamente");
     }
 
     @PutMapping("/{numeroDocumento}")
     public ResponseEntity<ApiResponse<Cliente>> actualizarCliente(
             @PathVariable String numeroDocumento,
-            @Validated @RequestBody Cliente cliente) {
-
-        ApiResponse<Cliente> response = clientesUseCase.actualizarCliente(numeroDocumento, cliente);
+            @Validated @RequestBody ClienteDTO clienteDTO) {
+        ApiResponse<Cliente> response = clientesUseCase.actualizarCliente(numeroDocumento, clienteDTO);
         return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @DeleteMapping("{numeroDocumento}")
+    public ResponseEntity<String> eliminarCliente(@PathVariable String numeroDocumento) {
+        boolean isEliminado = clientesUseCase.eliminarCliente(numeroDocumento);
+        if (isEliminado) {
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body("Cliente eliminado exitosamente");
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body("No se pudo eliminar el cliente por un error");
+        }
+
     }
 }

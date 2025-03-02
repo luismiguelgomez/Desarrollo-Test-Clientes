@@ -52,8 +52,8 @@ class ApiRestTest {
     void obtenerCliente_ConDireccion() throws Exception {
         ApiResponse<Cliente> apiResponse = ApiResponse.success(clienteMock);
 
-        when(clientesUseCase.obtenerCliente("CC", "12345678", true)).thenReturn(apiResponse);
-
+       /* when(clientesUseCase.obtenerCliente("CC", "12345678", true)).thenReturn(apiResponse);
+*/
         mockMvc.perform(get("/api/clientes/CC/12345678")
                         .param("withAddress", "true")
                         .contentType(MediaType.APPLICATION_JSON))

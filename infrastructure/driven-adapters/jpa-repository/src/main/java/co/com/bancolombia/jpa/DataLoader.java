@@ -16,9 +16,8 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
         if (clienteRepository.count() == 0) {
             List<ClienteEntity> clientes = List.of(
-                    new ClienteEntity(1000225586, "Luis", "Miguel", "Gomez", "Perez", 310272820, "Calle 48 p bis c sur #3-45", "Medellin", "luis@example.com"),
-                    new ClienteEntity(1546564111, "Ana", "Maria", "Lopez", "Garcia", 312564984, "Carrera 4 #5-6", "Bogota", "ana@example.com"),
-                    new ClienteEntity(1331054566, "Carlos", "Eduardo", "Martinez", "Ruiz", 315566845, "Av. Siempre Viva", "Cali", "carlos@example.com")
+                    new ClienteEntity(1000225586L, "Luis@gmail.com", "Carrera 4 #5-65", "Luis Miguel", "31220235"),
+                    new ClienteEntity(1546564111L, "ana@example.com", "Carrera 4 #5-6", "Lopez Garcia luis caros", "312564984")
             );
 
             clienteRepository.saveAll(clientes);
